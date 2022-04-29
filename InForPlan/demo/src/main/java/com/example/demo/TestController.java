@@ -8,6 +8,7 @@ public class TestController {
     
     @GetMapping(value = {"", "/"})
     public String enter() {
+        System.out.println("hello");
         return "Hello VS Code";
     }
 }
