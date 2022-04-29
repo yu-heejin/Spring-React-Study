@@ -30,6 +30,7 @@ const LoginApp = () => {
 
     return (
         <>
+        <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
         <DivStyle>
             <h2>Login</h2>
             <form onSubmit={submitHandle}>
@@ -66,7 +67,7 @@ const DivStyle = styled.div`
     width: 800px;
     height: 500px;
     background-color: white;
-    margin: 200px auto;
+    margin: 0px auto;
     border-radius: 30px;
 `;
 
