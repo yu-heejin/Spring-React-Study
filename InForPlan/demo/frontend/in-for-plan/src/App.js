@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import Login from './loginComponent';
-//import { Router } from 'react-router-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from './LoginComponent';
+import Register from './RegisterComponent'
+import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 
 class App extends Component {
   render() {
     return(
-        <Router>
-            <Route path="/" component={Login} />
-        </Router>
+    <Router>
+        <Route path="/" exact={true} component={withRouter(Login)}></Route>
+        <Route path="/signup" component={withRouter(Register)}></Route>
+    </Router>
     )
   }
 }

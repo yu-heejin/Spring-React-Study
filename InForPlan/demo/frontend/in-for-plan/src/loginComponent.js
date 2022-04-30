@@ -2,6 +2,7 @@ import React, {Component, } from 'react';
 import styled from "styled-components";
 import './App.css';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 class LoginApp extends Component {
     constructor(props) {
@@ -12,6 +13,12 @@ class LoginApp extends Component {
             id: "",
             pw: "",
         };
+    }
+
+    componentDidUpdate(preProps) {
+        if(this.props.userID !== preProps.userId) {
+            this.fetchData(this.props.userID);
+        }
     }
 
     handleChange = (e) => {
@@ -41,33 +48,14 @@ class LoginApp extends Component {
         .catch(e => {
             alert(e);
         });
-
-        // axios.post("http://localhost:8080/users/login", user)
-        // .then((response) => {
-        //     alert(response.data)
-        //     console.log(response.data)
-        // })
-        // .catch(e => {
-        //     alert(e);
-        // });
     }
 
-    // componentDidMount() {
-    //     axios.get("http://localhost:8080/api")
-    //    // .then(response => console.log(response.data));  => spring에서 데이터 받아서 콘솔에 출력
-    //    .then(response => response.data)
-    //    .then((data) => {
-    //        this.setState({logins: data})
-    //    });
-    // }
-
     render() {
-        //const {id, pw} = this.state;
         return (
             <>
                 <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
                 <DivStyle>
-                    
+                    <Cover>
                     <h2>Login</h2>
                     <form onSubmit={this.submitLogin}>
                         <p><input type="text"
@@ -88,8 +76,9 @@ class LoginApp extends Component {
                         <p>
                             <button type="submit">Login</button>
                         </p>
-                        <a href='#'>sign up</a>
+                        <Link to="/signup">Sign up</Link>
                     </form>
+                    </Cover>
                 </DivStyle>
         </>
         )
@@ -102,7 +91,14 @@ const DivStyle = styled.div`
     height: 500px;
     background-color: white;
     margin: 0px auto;
+    padding-top: 30px;
     border-radius: 30px;
+`;
+
+const Cover = styled.div`
+    width: 600px;
+    height: 300px;
+    margin: auto;
 `;
 
 export default LoginApp;
