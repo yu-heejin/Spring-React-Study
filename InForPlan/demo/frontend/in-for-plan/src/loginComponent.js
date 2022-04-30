@@ -29,25 +29,6 @@ class LoginApp extends Component {
 
     submitLogin(event) {
         event.preventDefault();
-        const formData = new FormData();
-        formData.append('id', this.state.id);
-        formData.append('pw', this.state.pw);
-
-        // axios("http://localhost:8080/users/login",
-        // {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     },
-        //     body: formData
-        // }
-        // ).then((response) => {
-        //         alert(response)
-        //         console.log(response)
-        // })
-        // .catch(e => {
-        //     alert(e);
-        // });
 
         axios.post('http://localhost:8080/users/login', null, {
             params: {
