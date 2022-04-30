@@ -19,6 +19,12 @@ input {
   width: 500px;
   height: 30px;
   font-family: 'GmarketSansMedium';
+  border-radius: 10px;
+  border-color: #bbe4f7;
+  background-image: url('../public/icons/user.png');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  padding-left: 30px;
 }
 
 table {

@@ -30,24 +30,37 @@ class LoginApp extends Component {
     submitLogin(event) {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('id', this.id);
-        formData.append('pw', this.pw);
+        formData.append('id', this.state.id);
+        formData.append('pw', this.state.pw);
 
-        axios("http://localhost:8080/users/login",
-        {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data'
+        // axios("http://localhost:8080/users/login",
+        // {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     },
+        //     body: formData
+        // }
+        // ).then((response) => {
+        //         alert(response)
+        //         console.log(response)
+        // })
+        // .catch(e => {
+        //     alert(e);
+        // });
+
+        axios.post('http://localhost:8080/users/login', null, {
+            params: {
+                id: this.state.id,
+                pw: this.state.pw
             }
-        }
-        ).then((response) => {
-                alert(response.data)
-                console.log(response.data)
+        }).then(function (response) {
+            console.log(response);
+            alert(response.data);
+        }).catch(function (error) {
+            console.log(error);
+            alert("fail");
         })
-        .catch(e => {
-            alert(e);
-        });
     }
 
     render() {
@@ -56,7 +69,11 @@ class LoginApp extends Component {
                 <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
                 <DivStyle>
                     <Cover>
-                    <h2>Login</h2>
+                    <h2 style={
+                        {
+                            color: '#bbe4f7'
+                        }
+                    }>Login</h2>
                     <form onSubmit={this.submitLogin}>
                         <p><input type="text"
                                     name="id"
