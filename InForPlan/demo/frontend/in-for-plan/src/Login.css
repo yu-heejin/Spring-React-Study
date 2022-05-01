@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #E6F7FF;
+  text-align: center;
+  font-family: 'GmarketSansMedium';
+}
+
+img {
+  margin-top: 30px;
+}
+
+input.idClass {
+  width: 500px;
+  height: 50px;
+  font-family: 'GmarketSansMedium';
+  border-radius: 10px;
+  border-color: #E6F7FF;
+  background-image: url('../public/icons/user.png');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-position-x: 5px;
+  padding-left: 30px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+input.pwClass {
+  width: 500px;
+  height: 50px;
+  font-family: 'GmarketSansMedium';
+  border-radius: 10px;
+  border-color: #E6F7FF;
+  background-image: url('../public/icons/lock.png');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-position-x: 5px;
+  padding-left: 30px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+button.loginButtonClass {
+  width: 535px;
+  height: 50px;
+  font-family: 'GmarketSansMedium';
+  border-radius: 10px;
+  background-color: #E6F7FF;
+  color: #2c2c2c;
+  border-width: 0px;
+  font-size: 17px;
+}
+
+table {
+  margin: auto;
+}
+
+a {
+  color: gray;
+  font-family: 'GmarketSansLight';
+}
+
+input{
+  width: 300px;
+  height: 30px;
+  font-family: 'GmarketSansMedium';
+  border-radius: 10px;
+  border-color: #E6F7FF;
+  border-style: solid;
+  border-width: 3px;
+}
+
+table {
+  border-spacing: 15px;
+}

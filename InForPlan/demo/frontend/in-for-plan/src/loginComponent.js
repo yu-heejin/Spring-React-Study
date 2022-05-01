@@ -1,10 +1,10 @@
 import React, {Component, } from 'react';
 import styled from "styled-components";
-import './App.css';
+import './Login.css';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-class LoginApp extends Component {
+class LoginComponent extends Component {
     constructor(props) {
         super(props);
         this.submitLogin = this.submitLogin.bind(this);
@@ -49,14 +49,14 @@ class LoginApp extends Component {
             <>
                 <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
                 <DivStyle>
-                    <Cover>
-                    <h2 style={
+                    <h1 style={
                         {
                             color: '#bbe4f7'
                         }
-                    }>Login</h2>
+                    }>Login</h1>
+                    <Cover>
                     <form onSubmit={this.submitLogin}>
-                        <p><input type="text"
+                        <p><input className='idClass' type="text"
                                     name="id"
                                     placeholder="ID"
                                     defaultValue={this.state.id}
@@ -64,7 +64,7 @@ class LoginApp extends Component {
                             ></input>
                         </p>
                         <p>
-                            <input type="password"
+                            <input  className='pwClass' type="password"
                                 name="pw"
                                 placeholder="Password"
                                 defaultValue={this.state.pw}
@@ -72,8 +72,9 @@ class LoginApp extends Component {
                             ></input>
                         </p> 
                         <p>
-                            <button type="submit">Login</button>
+                            <button className="loginButtonClass" type="submit">LOGIN</button>
                         </p>
+                        <br></br><br></br>
                         <Link to="/signup">Sign up</Link>
                     </form>
                     </Cover>
@@ -96,7 +97,7 @@ const DivStyle = styled.div`
 const Cover = styled.div`
     width: 600px;
     height: 300px;
-    margin: auto;
+    margin: 50px auto;
 `;
 
-export default LoginApp;
+export default LoginComponent;

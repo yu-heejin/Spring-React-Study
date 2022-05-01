@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  img {
+    margin-top: 30px;
+  }
+  
+  button.signButtonClass {
+    width: 310px;
+    height: 35px;
+    font-family: 'GmarketSansMedium';
+    border-radius: 10px;
+    background-color: #E6F7FF;
+    border-width: 0px;
+    font-size: 15px;
+  }
+  
+  table {
+    margin: auto;
+  }
+  
+  input{
+    width: 300px;
+    height: 30px;
+    font-family: 'GmarketSansMedium';
+    border-radius: 10px;
+    border-color: #E6F7FF;
+    border-style: solid;
+    border-width: 3px;
+  }
+  
+  table {
+    border-spacing: 15px;
+  }

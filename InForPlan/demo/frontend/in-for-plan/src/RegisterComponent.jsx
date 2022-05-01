@@ -1,15 +1,21 @@
 import React, {Component, } from 'react';
 import styled from "styled-components";
-import './App.css';
+import './Register.css';
+import GlobalStyles from './GlobalStyle';
 
-class LoginApp extends Component {
+
+class RegisterComponent extends Component {
     render() {
         return (
             <>
+                <GlobalStyles></GlobalStyles>
                 <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
-                <DivStyle>
-                    
-                    <h2>Sign up</h2>
+                <h1 style={
+                        {
+                            color: '#bbe4f7'
+                        }
+                    }>Sign up</h1>
+                     <DivStyle>
                     <form onSubmit={this.submitLogin}>
                         <table>
                             <tr>
@@ -37,10 +43,12 @@ class LoginApp extends Component {
                                 <td>&nbsp;</td>
                                 <td><input type="date" name="birth"></input></td>
                             </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td><button className="signButtonClass" type="submit">sign up</button></td>
+                            </tr>
                         </table>
-                        <p>
-                            <button type="submit">sign up</button>
-                        </p>
                     </form>
                 </DivStyle>
         </>
@@ -50,11 +58,9 @@ class LoginApp extends Component {
 
 //style code list
 const DivStyle = styled.div`
-    width: 800px;
-    height: 500px;
-    background-color: white;
-    margin: 0px auto;
-    border-radius: 30px;
+width: 600px;
+height: 300px;
+margin: 50px auto;
 `;
 
-export default LoginApp;
+export default RegisterComponent;
