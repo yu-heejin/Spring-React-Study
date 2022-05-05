@@ -15,11 +15,11 @@ class LoginComponent extends Component {
         };
     }
 
-    componentDidUpdate(preProps) {
-        if(this.props.userID !== preProps.userId) {
-            this.fetchData(this.props.userID);
-        }
-    }
+    // componentDidUpdate(preProps) {
+    //     if(this.props.userID !== preProps.userId) {
+    //         this.fetchData(this.props.userID);
+    //     }
+    // }
 
     handleChange = (e) => {
         this.setState({
@@ -49,11 +49,6 @@ class LoginComponent extends Component {
             <>
                 <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
                 <DivStyle>
-                    <h1 style={
-                        {
-                            color: '#bbe4f7'
-                        }
-                    }>Login</h1>
                     <Cover>
                     <form onSubmit={this.submitLogin}>
                         <p><input className='idClass' type="text"
@@ -97,7 +92,7 @@ const DivStyle = styled.div`
 const Cover = styled.div`
     width: 600px;
     height: 300px;
-    margin: 50px auto;
+    margin: 100px auto;
 `;
 
 export default LoginComponent;

@@ -43,3 +43,13 @@
   table {
     border-spacing: 15px;
   }
+
+  button.authenButton {
+    height: 35px;
+    font-family: 'GmarketSansMedium';
+    border-radius: 10px;
+    background-color: #c7dfea;
+    border-width: 0px;
+    font-size: 15px;
+    color: white;
+  }
