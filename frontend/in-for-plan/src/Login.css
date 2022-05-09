@@ -16,6 +16,10 @@ body {
   background-color: #E6F7FF;
   text-align: center;
   font-family: 'GmarketSansMedium';
+  -webkit-user-select:none; 
+  -moz-user-select:none; 
+  -ms-user-select:none; 
+  user-select:none
 }
 
 img {

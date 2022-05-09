@@ -10,6 +10,10 @@
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    -webkit-user-select:none; 
+    -moz-user-select:none; 
+    -ms-user-select:none; 
+    user-select:none
   }
   
   img {
@@ -45,11 +49,17 @@
   }
 
   button.authenButton {
-    height: 35px;
+    width: 120px;
+    height: 30px;
     font-family: 'GmarketSansMedium';
-    border-radius: 10px;
+    border-radius: 7px;
     background-color: #c7dfea;
     border-width: 0px;
     font-size: 15px;
     color: white;
+  }
+
+  img.profile_preview {
+    width: 150px;
+    height: 150px;
   }

@@ -9,29 +9,37 @@ class RegisterComponent extends Component {
         super(props);
         this.submitLogin = this.submitLogin.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleImage = this.handleImage.bind(this);
         this.state = {
             email: "",
             pw: "",
             phone: "",
             name: "",
             birth: "0000-00-00",
-            //profile: 'url(../public/imgs/basic.png)'
-            //작은 따옴표 없으면 url is not defined 오류남
-            //url은 그냥 css 파일 안에서만 따옴표 없이 사용가능
+            file: "imgs/basic.png",
+            fileUrl: "imgs/basic.png",
         };
     }
 
-    // componentDidUpdate(preProps) {
-    //     if(this.props.userID !== preProps.userId) {
-    //         this.fetchData(this.props.userID);
-    //     }
-    // }
 
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
         });
     };
+
+    handleImage = (e) => {
+        e.preventDefault();
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                fileUrl: reader.result
+            })
+        }
+        reader.readAsDataURL(file);
+    }
 
     submitLogin(event) {
         event.preventDefault();
@@ -42,7 +50,8 @@ class RegisterComponent extends Component {
                 pw: this.state.pw,
                 phone: this.state.phone,
                 name: this.state.name,
-                birth: this.state.birth
+                birth: this.state.birth,
+                profile: this.state.profile,
             }
         }).then(function (response) {
             console.log(response);
@@ -54,6 +63,10 @@ class RegisterComponent extends Component {
     }
     
     render() {
+        let profile_preview = null;
+        if(this.state.file !== '') {
+            profile_preview = <img className='profile_preview' alt="default" src={this.state.fileUrl}></img>
+        } 
         return (
             <>
                 <GlobalStyles></GlobalStyles>
@@ -103,15 +116,21 @@ class RegisterComponent extends Component {
                                 defaultValue={this.state.birth}
                                 onChange={this.handleChange}></input></td>
                             </tr>
-                            {/*
+                            
                             <tr>
+                                <td>Profile Image</td>
                                 <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td> <input type="file" name="profile"
-                                defaultValue={this.state.profile}
-                                onChange={this.handleChange}></input></td>
+                                <td>
+                                    {profile_preview}
+                                    <input type="file"
+                                    accept="image/*"
+                                    name="profile"
+                                    onChange={this.handleImage}></input>
+                                    <p style={{
+                                        fontSize: '10px',
+                                    }}>파일 크기는 200 x 200의 크기를 권장합니다.</p></td>
                             </tr>
-                            */}
+                            
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>

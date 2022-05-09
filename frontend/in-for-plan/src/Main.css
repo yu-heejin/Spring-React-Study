@@ -1,0 +1,48 @@
+div.left {
+    background-color: #ddecf8;
+    float: left;
+    width: 20%;
+    height: 100vh;
+}
+
+div.right {
+    float: right;
+    width:78%;
+    height: 100%;
+}
+
+div.schedule {
+    background-color: #ddecf8;
+    border-radius: 8px;
+    height: 15vh;
+    width: 98%;
+}
+
+img.logoImage2 {
+    width: 250px;
+    height: 70px;
+    float: top right;
+}
+
+div.todo {
+    background-color: #ddecf8;
+    float: left;
+    width: 25%;
+    height: 71vh;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+div.projectList {
+    background-color: #ddecf8;
+    float:right;
+    width: 74%;
+    height: 71vh;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+div.subRight {
+    height: 100%;
+    width: 98%;
+}
