@@ -5,14 +5,16 @@ import com.techeer.inforplanbackend.domain.project.dto.response.TaskResponseDto;
 import com.techeer.inforplanbackend.domain.project.repository.TaskRepository;
 import com.techeer.inforplanbackend.domain.project.dto.request.TaskRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TaskMapper {
-//    @Autowired
-//    private final TaskRepository taskRepository;
-//
-//    public TaskMapper(TaskRepository taskRepository) {
-//        this.taskRepository = taskRepository;
-//    }
+    @Autowired
+    private final TaskRepository taskRepository;
+
+    public TaskMapper(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     public Task toEntity(TaskRequestDto taskRequestDto) {   //요청받은 DTO로부터 엔티티로 값을 줌
         return Task.builder()

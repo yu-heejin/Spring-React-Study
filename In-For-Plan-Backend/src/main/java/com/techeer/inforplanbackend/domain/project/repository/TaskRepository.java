@@ -2,12 +2,9 @@ package com.techeer.inforplanbackend.domain.project.repository;
 
 import com.techeer.inforplanbackend.domain.project.domain.entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 @Repository
-@NoRepositoryBean
 public interface TaskRepository extends JpaRepository<Task, Long> {
     /*
         JpaRepository를 단순하게 상속하는 것만으로도 Entity 하나에 대해서 다음과 같은

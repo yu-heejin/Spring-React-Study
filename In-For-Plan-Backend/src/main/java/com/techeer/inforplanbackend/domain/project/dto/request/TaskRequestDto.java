@@ -13,9 +13,9 @@ import java.sql.Date;
 @Builder
 @AllArgsConstructor
 public class TaskRequestDto {
-    public List list_id;
+    public Long list_id;
 
-    public Project project_id;
+    public Long project_id;
 
     public String description;
 
@@ -26,4 +26,14 @@ public class TaskRequestDto {
     public String file_url;
 
     public String task_title;
+
+    public String toString() {
+        return "\"list_id\": " + list_id +"\n" +
+                "    \"project_id\":" + project_id + "\n" +
+                "    \"description\": " + description +",\n" +
+                "    \"start_date\":" + start_date + ",\n" +
+                "    \"end_date\": " + end_date + ",\n" +
+                "    \"file_url\": " +  file_url +",\n" +
+                "    \"task_title\": " + task_title;
+    }
 }

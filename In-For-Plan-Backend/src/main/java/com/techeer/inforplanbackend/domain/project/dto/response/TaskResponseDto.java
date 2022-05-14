@@ -14,9 +14,9 @@ import java.time.LocalDate;
 public class TaskResponseDto {
     public Long task_id;
 
-    public List list_id;
+    public Long list_id;
 
-    public Project project_id;
+    public Long project_id;
 
     public String description;
 

@@ -16,14 +16,17 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long task_id;
-
-    @ManyToOne
-    @JoinColumn(name = "list_id")
-    private List list_id;
-
-    @ManyToOne
-    @JoinColumn(name = "project_id")
-    private Project project_id;
+    @Column(name="list_date", nullable=false)
+    private Long list_id;
+    @Column(name="project_id", nullable=false)
+    private Long project_id;
+//    @ManyToOne
+//    @JoinColumn(name = "list_id")
+//    private List list_id;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "project_id")
+//    private Project project_id;
 
     @Column(name="description", nullable=false, length=500)
     private String description;
@@ -49,7 +52,7 @@ public class Task {
     private String task_title;
 
     @Builder
-    public Task(List list_id, Project project_id, String description, Date start_date, Date end_date, String file_url, String task_title) {
+    public Task(Long list_id, Long project_id, String description, Date start_date, Date end_date, String file_url, String task_title) {
         this.list_id = list_id;
         this.project_id = project_id;
         this.description = description;

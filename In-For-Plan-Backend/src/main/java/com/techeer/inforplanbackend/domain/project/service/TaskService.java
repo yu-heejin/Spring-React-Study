@@ -7,14 +7,17 @@ import com.techeer.inforplanbackend.domain.project.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @AllArgsConstructor
 public class TaskService {
-    private TaskRepository taskRepository;
-    private final TaskMapper taskMapper;
-,
-    public Task save(TaskRequestDto taskRequestDto) {
-        return taskMapper.toEntity(taskRequestDto);
+    public final TaskRepository taskRepository;
+    public final TaskMapper taskMapper;
+
+    @Transactional
+    public Task create(TaskRequestDto taskRequestDto) {
+        return taskRepository.save(taskMapper.toEntity(taskRequestDto));
     }
 
 }
