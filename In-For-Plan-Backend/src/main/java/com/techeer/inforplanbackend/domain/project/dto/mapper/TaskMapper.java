@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TaskMapper {
-    @Autowired
+
     private final TaskRepository taskRepository;
 
     public TaskMapper(TaskRepository taskRepository) {

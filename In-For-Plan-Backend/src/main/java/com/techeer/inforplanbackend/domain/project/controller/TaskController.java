@@ -5,12 +5,13 @@ import com.techeer.inforplanbackend.domain.project.dto.mapper.TaskMapper;
 import com.techeer.inforplanbackend.domain.project.dto.request.TaskRequestDto;
 import com.techeer.inforplanbackend.domain.project.dto.response.TaskResponseDto;
 import com.techeer.inforplanbackend.domain.project.service.TaskService;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:8000")
 @RequestMapping(value = "/tasks")
 public class TaskController {
     public TaskService taskService;
@@ -23,5 +24,7 @@ public class TaskController {
 
         return taskMapper.fromEntity(task);
     }
+
+
 
 }
