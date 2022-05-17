@@ -17,14 +17,17 @@ public class TaskController {
     public TaskService taskService;
     public TaskMapper taskMapper;
 
-    @PostMapping(value = "/test")
+    @PostMapping(value = "/test")   //test not ok
     @ResponseBody
-    public TaskResponseDto save(@RequestBody TaskRequestDto taskRequestDto) {
+    public TaskResponseDto create(@RequestBody TaskRequestDto taskRequestDto) {
         Task task = taskService.create(taskRequestDto);
-
         return taskMapper.fromEntity(task);
     }
 
 
-
+    @GetMapping("/api")   //test ok
+    @ResponseBody
+    public String test() {
+        return "hello world";
+    }
 }
