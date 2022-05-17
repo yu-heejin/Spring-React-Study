@@ -28,7 +28,7 @@ div.todo {
     background-color: #ddecf8;
     float: left;
     width: 25%;
-    height: 71vh;
+    height: 67vh;
     border-radius: 8px;
     margin-top: 10px;
 }
@@ -37,7 +37,7 @@ div.projectList {
     background-color: #ddecf8;
     float:right;
     width: 74%;
-    height: 71vh;
+    height: 67vh;
     border-radius: 8px;
     margin-top: 10px;
 }
