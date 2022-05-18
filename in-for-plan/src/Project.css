@@ -1,21 +1,30 @@
 div.top {
     width: 100%;
-    height: 14vh;
+    height: 12vh;
     background-color: #ddecf8;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 div.left2 {
-    width: 15%;
-    height: 81.8vh;
+    width: 20%;
+    height: 85vh;
     background-color: #e2e2e2;
 }
 
 div.title {
-    width: 50%;
-    height: 10vh;
+    width: 40%;
+    height: 8vh;
     background-color: #bbe1ff;
     border-radius: 30px;
-    margin-left: 20px;
-    
+    margin-left: 20px;   
+}
+
+p.setTime {
+    font-size: 12px;
+}
+
+span.add {
+    font-size: 12px;
+    float: right;
+    margin: 10px;
 }

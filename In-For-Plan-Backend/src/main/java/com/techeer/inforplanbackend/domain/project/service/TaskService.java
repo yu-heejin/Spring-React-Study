@@ -27,4 +27,14 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+//    @Transactional
+//    public void deleteById(Long task_id) {
+//        taskRepository.deleteById(task_id);
+//    }
+//
+//    @Transactional
+//    public Task update(Long task_id, TaskRequestDto taskRequestDto) {
+//
+//    }
+
 }
