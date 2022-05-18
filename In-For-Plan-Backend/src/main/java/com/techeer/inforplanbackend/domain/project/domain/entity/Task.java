@@ -3,6 +3,7 @@ package com.techeer.inforplanbackend.domain.project.domain.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Table(name="task")
+@RequiredArgsConstructor
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,10 +53,6 @@ public class Task {
 
     @Column(name="task_title", nullable=false)
     private String task_title;
-
-    public Task() {
-
-    }
 
     @Builder
     public Task(Long list_id, Long project_id, String description, Date start_date, Date end_date, String file_url, String task_title) {
