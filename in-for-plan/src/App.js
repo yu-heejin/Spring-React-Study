@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Login from './LoginComponent';
-import Register from './RegisterComponent';
-import Main from './MainComponent';
-import Project from './ProjectComponent';
+import Login from './component/LoginComponent';
+import Register from './component/RegisterComponent';
+import Main from './component/MainComponent';
+import Project from './component/ProjectComponent';
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 
 class App extends Component {

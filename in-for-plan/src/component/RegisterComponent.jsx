@@ -1,7 +1,7 @@
 import React, {Component, } from 'react';
 import styled from "styled-components";
-import './Register.css';
-import GlobalStyles from './GlobalStyle';
+import '../css/Register.css';
+import GlobalStyles from '../css/GlobalStyle';
 import axios from 'axios';
 
 class RegisterComponent extends Component {
