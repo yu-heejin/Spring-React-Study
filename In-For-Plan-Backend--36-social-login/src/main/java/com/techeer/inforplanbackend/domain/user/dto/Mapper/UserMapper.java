@@ -1,7 +1,7 @@
 package com.techeer.inforplanbackend.domain.user.dto.Mapper;
 
 
-import com.techeer.inforplanbackend.domain.user.domain.entity.Users;
+import com.techeer.inforplanbackend.domain.user.entity.Users;
 import com.techeer.inforplanbackend.domain.user.dto.Request.UserRequestDto;
 import com.techeer.inforplanbackend.domain.user.dto.Response.UserResponseDto;
 import lombok.RequiredArgsConstructor;

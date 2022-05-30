@@ -1,10 +1,11 @@
 package com.techeer.inforplanbackend.config.auth.dto;
 
-import com.techeer.inforplanbackend.domain.user.domain.entity.Users;
+import com.techeer.inforplanbackend.domain.user.entity.Users;
+import lombok.Getter;
 
 import java.io.Serializable;
-import java.util.Locale;
 
+@Getter
 public class SessionUser implements Serializable {
     private String name;
     private String email;

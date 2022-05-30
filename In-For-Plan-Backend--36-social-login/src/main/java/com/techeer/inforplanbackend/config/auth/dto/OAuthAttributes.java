@@ -1,7 +1,7 @@
 package com.techeer.inforplanbackend.config.auth.dto;
 
-import com.techeer.inforplanbackend.domain.user.domain.entity.Users;
-import com.techeer.inforplanbackend.domain.user.role.Role;
+import com.techeer.inforplanbackend.domain.user.entity.Role;
+import com.techeer.inforplanbackend.domain.user.entity.Users;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -37,7 +37,6 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
-
 
     public Users toEntity() {
         return Users.builder()

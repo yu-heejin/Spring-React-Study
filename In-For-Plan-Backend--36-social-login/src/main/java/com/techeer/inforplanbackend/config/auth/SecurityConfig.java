@@ -1,14 +1,13 @@
 package com.techeer.inforplanbackend.config.auth;
 
-import com.techeer.inforplanbackend.domain.user.role.Role;
+import com.techeer.inforplanbackend.domain.user.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
-
 
 @RequiredArgsConstructor
-@EnableWebFluxSecurity
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomOAuth2UserService customOAuth2UserService;
 
@@ -18,8 +17,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .headers().frameOptions().disable()
                 .and()
-                .authorizeRequests()
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
+                    .authorizeRequests()
+                .antMatchers("/", "/css/**", "/images/**",
+                        "/js/**", "/h2-console/**").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()

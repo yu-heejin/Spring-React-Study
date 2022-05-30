@@ -2,7 +2,7 @@ package com.techeer.inforplanbackend.config.auth;
 
 import com.techeer.inforplanbackend.config.auth.dto.OAuthAttributes;
 import com.techeer.inforplanbackend.config.auth.dto.SessionUser;
-import com.techeer.inforplanbackend.domain.user.domain.entity.Users;
+import com.techeer.inforplanbackend.domain.user.entity.Users;
 import com.techeer.inforplanbackend.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,18 +20,19 @@ import java.util.Collections;
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
-    //이 클래스에서는 구글 로그인 이후 가져온 사용자의 정보를 기반으로
-    //가입 및 정보 수정, 세션 저장등의 기능을 지원함
     private final UserRepository userRepository;
     private final HttpSession httpSession;
+    
+    private Users entity;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
+
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
-                .getUserInfoEndpoint().getUserNameAttributeName();
+        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
+
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         Users users = saveOrUpdate(attributes);
@@ -41,15 +42,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(users.getRoleKey())),
                 attributes.getAttributes(),
-                attributes.getNameAttributeKey());
-
+                attributes.getNameAttributeKey()
+        );
     }
 
     private Users saveOrUpdate(OAuthAttributes attributes) {
-        Users user = userRepository.findByEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getName(), attributes.getUrl()))
-                .orElse(attributes.toEntity());
-
-        return userRepository.save(user);
+        Users users = (Users) userRepository.findByEmail(attributes.getEmail()).orElseThrow(() -> new IllegalArgumentException("유저가 없습니다."));
+        return userRepository.save(users);
     }
 }

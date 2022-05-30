@@ -1,19 +1,16 @@
-package com.techeer.inforplanbackend.domain.user.domain.entity;
+package com.techeer.inforplanbackend.domain.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.techeer.inforplanbackend.domain.user.role.Role;
 import com.techeer.inforplanbackend.global.common.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
-
+import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Date;
 
 @Getter
 @Entity
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Users extends BaseTimeEntity {
 
     @Id
@@ -53,18 +50,6 @@ public class Users extends BaseTimeEntity {
         this.url = url;
         this.birthDate = birthDate;
         this.role = role;
-    }
-
-//    public void update(String name, String url) {
-//        this.name = name;
-//        this.url = url;
-//    }
-
-    public Users update(String name, String url) {
-        this.name = name;
-        this.url = url;
-
-        return this;
     }
 
     public String getRoleKey() {

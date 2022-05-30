@@ -1,7 +1,6 @@
 package com.techeer.inforplanbackend.domain.project.entity;
 
 import com.techeer.inforplanbackend.domain.members_project.entity.Members_Project;
-import com.techeer.inforplanbackend.domain.user.domain.entity.Users;
 import lombok.*;
 
 import javax.persistence.*;

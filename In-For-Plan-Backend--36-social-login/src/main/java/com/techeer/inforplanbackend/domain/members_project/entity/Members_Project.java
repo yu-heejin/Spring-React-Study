@@ -1,7 +1,7 @@
 package com.techeer.inforplanbackend.domain.members_project.entity;
 
 import com.techeer.inforplanbackend.domain.project.entity.Project;
-import com.techeer.inforplanbackend.domain.user.domain.entity.Users;
+import com.techeer.inforplanbackend.domain.user.entity.Users;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.techeer.inforplanbackend.domain.user.role;
+package com.techeer.inforplanbackend.domain.user.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

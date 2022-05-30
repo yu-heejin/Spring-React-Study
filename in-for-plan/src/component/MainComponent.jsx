@@ -13,8 +13,22 @@ const Main = () => {
         <div>
             <GlobalStyles></GlobalStyles>
             <div className='left'>
-                [프로필 사진] 마리님, 환영합니다!
-                <p><Link>마이페이지</Link> | <Link>로그아웃</Link></p>
+                <img src='imgs/dog.jpg' style={{
+                width: 80,
+                height: 80,
+                borderRadius: '70%',
+                verticalAlign: 'middle',
+            }} alt="profile"></img>
+            <div>
+            마리님, 환영합니다!<br></br>
+                <Link style={{
+                    fontSize: '10px'
+                }}>마이페이지</Link> <span style={{
+                    fontSize: '10px'
+                }}>|</span> <Link style={{
+                    fontSize: '10px'
+                }}>로그아웃</Link>
+            </div>
                 <CalendarContainer>
                     <Calendar onChange={onChange} value={value}></Calendar>
                 </CalendarContainer>
@@ -23,8 +37,12 @@ const Main = () => {
                 <img className='logoImage2' alt='logo' src='imgs/logo_x.png' ></img>
                 <div className='schedule'></div>
                 <div className="subRight">
-                    <div className='todo'></div>
-                    <div className='projectList'></div>
+                    <div className='todo'>
+                        To Do List
+                    </div>
+                    <div className='projectList'>
+                        Project
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,7 +53,7 @@ const Main = () => {
 const CalendarContainer = styled.div`
     margin: auto;
     background-color: #ddecf8;
-    font-family: GmarketSansMedium;
+    font-family: GmarketSansMedium;   //폰트 적용 안됨 ㅠㅠ
 `
 
 export default Main;
