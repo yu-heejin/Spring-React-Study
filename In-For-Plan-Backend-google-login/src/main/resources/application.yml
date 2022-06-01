@@ -1,0 +1,44 @@
+spring:
+  profiles:
+    include:
+      - h2
+      - postgre
+      - oauth
+#      - security
+
+  main:
+    allow-circular-references: true
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          sql: DEBUG
+          descriptor:
+            sql: DEBUG
+
+# security OAuth
+security:
+  oauth2.client:
+    registration:
+      google:
+        clientId: '457190401330-d0kdd9mkfr8gptk868o0a89oorlvrnre.apps.googleusercontent.com'
+        clientSecret: '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'
+        scope:
+          - email
+          - profile
+
+# cors
+cors:
+  allowed-origins: 'http://localhost:3000'
+  allowed-methods: GET, POST, PUT, DELETE
+  allowed-headers: '*'
