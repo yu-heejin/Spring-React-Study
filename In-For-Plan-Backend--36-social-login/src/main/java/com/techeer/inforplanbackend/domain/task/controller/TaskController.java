@@ -1,4 +1,4 @@
-package com.techeer.inforplanbackend.domain.project.controller;
+package com.techeer.inforplanbackend.domain.task.controller;
 
 import com.techeer.inforplanbackend.domain.project.domain.entity.Task;
 import com.techeer.inforplanbackend.domain.project.dto.mapper.TaskMapper;
