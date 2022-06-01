@@ -4,7 +4,7 @@ import '../css/Project.css';
 import Picker from 'emoji-picker-react';
 import { Link } from "react-router-dom";
 
-const Project = () => {
+function Project() {
     const [chosenEmoji, setChosenEmoji] = useState(null);
 
     const onEmojiClick = (e, obj) => {

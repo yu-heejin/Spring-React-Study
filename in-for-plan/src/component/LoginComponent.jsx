@@ -1,70 +1,47 @@
-import React, {Component, } from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import '../css/Login.css';
-import axios from 'axios';
 import { Link } from "react-router-dom";
 
-class LoginComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.submitLogin = this.submitLogin.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.state = {
-            id: "",
-            pw: "",
-        };
-    }
+function Login() {
+    //react hook
+    const [id, setId] = useState('');
+    const [pw, setPw] = useState('');
 
-    // componentDidUpdate(preProps) {
-    //     if(this.props.userID !== preProps.userId) {
-    //         this.fetchData(this.props.userID);
-    //     }
-    // }
+    const onSubmit = (e) => {
+        e.preventDefault();
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value,
+        console.log({
+            id,
+            pw
         });
-    };
-
-    submitLogin(event) {
-        event.preventDefault();
-
-        axios.post('http://localhost:8080/users/login', null, {
-            params: {
-                id: this.state.id,
-                pw: this.state.pw
-            }
-        }).then(function (response) {
-            console.log(response);
-            alert(response.data);
-        }).catch(function (error) {
-            console.log(error);
-            alert("fail");
-        })
     }
 
-    render() {
-        return (
-            <>
-                <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
-                <DivStyle>
-                    <Cover>
-                    <form onSubmit={this.submitLogin}>
+    const onChangeId = (e) => {
+        setId(e.target.value);
+    }
+
+    const onChangePw = (e) => {
+        setPw(e.target.value);
+    }
+
+    return (
+        <>
+            <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
+            <DivStyle>
+                <Cover>
+                    <form onSubmit={onSubmit}>
                         <p><input className='idClass' type="text"
-                                    name="id"
-                                    placeholder="ID"
-                                    defaultValue={this.state.id}
-                                    onChange={this.handleChange}
-                            ></input>
+                            name="id"
+                            placeholder="ID"
+                            onChange={onChangeId}
+                        ></input>
                         </p>
-                        <p>
-                            <input  className='pwClass' type="password"
-                                name="pw"
-                                placeholder="Password"
-                                defaultValue={this.state.pw}
-                                onChange={this.handleChange}
-                            ></input>
+                        <p><input  className='pwClass' type="password"
+                            name="pw"
+                            placeholder="Password"
+                            onChange={onChangePw}
+                        ></input>
                         </p> 
                         <p>
                             <button className="loginButtonClass" type="submit">LOGIN</button>
@@ -72,11 +49,10 @@ class LoginComponent extends Component {
                         <br></br><br></br>
                         <Link to="/signup">Sign up</Link>
                     </form>
-                    </Cover>
-                </DivStyle>
+                </Cover>
+            </DivStyle>
         </>
-        )
-    }    
+    )
 }
 
 //style code list
@@ -95,4 +71,4 @@ const Cover = styled.div`
     margin: 100px auto;
 `;
 
-export default LoginComponent;
+export default Login;

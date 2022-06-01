@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-const Main = () => {
+function Main() {
     const [value, onChange] = useState(new Date());
     return (
         <div>
