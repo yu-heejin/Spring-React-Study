@@ -1,6 +1,6 @@
-package com.techeer.inforplanbackend.domain.user.config.auth;
+package com.example.google.auth;
 
-import com.techeer.inforplanbackend.domain.user.domain.entity.Role;
+import com.example.google.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
