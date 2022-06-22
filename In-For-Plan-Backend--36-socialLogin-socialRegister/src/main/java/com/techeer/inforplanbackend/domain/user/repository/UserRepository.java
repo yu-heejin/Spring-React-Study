@@ -1,5 +1,6 @@
 package com.techeer.inforplanbackend.domain.user.repository;
 
+import com.techeer.inforplanbackend.domain.user.domain.entity.SocialUsers;
 import com.techeer.inforplanbackend.domain.user.domain.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

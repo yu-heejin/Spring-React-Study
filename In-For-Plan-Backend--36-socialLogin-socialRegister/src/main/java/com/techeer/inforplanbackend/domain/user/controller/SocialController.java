@@ -1,27 +1,26 @@
 package com.techeer.inforplanbackend.domain.user.controller;
 
+import com.techeer.inforplanbackend.domain.user.security.SessionUsers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
 public class SocialController {
-    @GetMapping("/api/v1/google")
-    public String login() {
+    private final HttpSession httpSession;
+
+    @GetMapping("/api/v1/social")
+    public String index(Model model){
+        //model.addAttribute("posts", postsService.findAllDesc());
+
+        SessionUsers user = (SessionUsers) httpSession.getAttribute("user");
+
+        if(user != null){
+            model.addAttribute("userName", user.getName());
+        }
         return "login";
-    }
-
-    @GetMapping("/api/v1/success")
-    public String success() {
-        return "success";
-    }
-
-    @GetMapping("/api/v1/fail")
-    public String fail() {
-        return "fail";
     }
 }
