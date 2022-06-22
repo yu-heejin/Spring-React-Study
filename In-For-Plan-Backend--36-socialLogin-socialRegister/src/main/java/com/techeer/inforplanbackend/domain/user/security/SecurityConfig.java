@@ -2,14 +2,17 @@ package com.techeer.inforplanbackend.domain.user.security;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
+import static com.techeer.inforplanbackend.domain.user.security.SocialType.GOOGLE;
+
+@Order(200)
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -24,12 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .oauth2Login()
-                //.userInfoEndpoint().userService(new CustomOAuth2UserService())
+                .userInfoEndpoint().userService(new CustomOAuth2UserService())
                 .and()
                 .defaultSuccessUrl("/api/v1/success")
                 .failureUrl("/api/v1/fail")
                 .and()
-                .exeptionHandling()
+                .exceptionHandling()
                 .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/api/v1/google"));
     }
 
