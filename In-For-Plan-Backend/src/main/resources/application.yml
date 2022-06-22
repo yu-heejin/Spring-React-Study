@@ -2,15 +2,9 @@ spring:
   profiles:
     include:
       - h2
+      - oauth
 #      - postgre
 #      - security
-    security:
-      oauth2:
-        client:
-          registration:
-            google:
-              client-id: 457190401330-d0kdd9mkfr8gptk868o0a89oorlvrnre.apps.googleusercontent.com
-              client-secret: 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
 
   main:
     allow-circular-references: true
