@@ -14,7 +14,6 @@ function Project() {
     };
 
     return (
-        
         <div>
             <GlobalStyles></GlobalStyles>  
             <div className='top'>

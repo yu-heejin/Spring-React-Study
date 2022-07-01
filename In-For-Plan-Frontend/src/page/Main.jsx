@@ -10,11 +10,11 @@ import styled from 'styled-components';
 
 const ProjectDiv = styled.div`
     width: 90%;
-    background-color: white;
+    background-color: #b9dcf8;
     margin: 0 auto;
     margin-top: 20px;
     border-radius: 30px;
-    padding: 8px;
+    padding: 11px;
 `;
 
 
@@ -63,8 +63,9 @@ function Main() {
                     </div>
                     <div className='projectList'>
                         Project
-                        <ProjectDiv>웹 개발 프로젝트</ProjectDiv>
-                        <ProjectDiv>산책 동아리</ProjectDiv>
+                        <p><Link to="/signup">+프로젝트 추가하기</Link></p>
+                        <ProjectDiv><Link className='proTitle' to="/project">웹 개발 프로젝트</Link></ProjectDiv>
+                        <ProjectDiv><Link className='proTitle' to="/project">산책 동아리</Link></ProjectDiv>
                     </div>
                 </div>
             </div>
