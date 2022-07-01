@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import GlobalStyles from '../css/GlobalStyle';
-import '../css/Project.css';
+import GlobalStyles from '../styles/GlobalStyle';
+import '../styles/Project.css';
 import Picker from 'emoji-picker-react';
 import { Link } from "react-router-dom";
 import Modal from "../component/Modal";

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import '../css/Login.css';
+import '../styles/Login.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -48,7 +48,7 @@ function Login() {
 
     return (
         <>
-            <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
+            <img className='logoImage' alt='logo' src='assets/imgs/logo_x.png' ></img>
             <DivStyle>
                 <Cover>
                     <form onSubmit={onSubmit}>

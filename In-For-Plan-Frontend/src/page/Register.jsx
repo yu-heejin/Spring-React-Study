@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-import '../css/Register.css';
-import GlobalStyles from '../css/GlobalStyle';
+import '../styles/Register.css';
+import GlobalStyles from '../styles/GlobalStyle';
 import axios from 'axios';
 
 function Register() {
@@ -10,7 +10,7 @@ function Register() {
     const [phone, setPhone] = useState('');
     const [name, setName] = useState('');
     const [birth, setBirth] = useState('');
-    const [profile, setProfile] = useState('imgs/basic.png');
+    const [profile, setProfile] = useState('assets/imgs/basic.png');
 
     const onSubmit = (e) => {
         e.preventDefault();   //이거 없으면 값 초기화돼버림
@@ -76,7 +76,7 @@ function Register() {
     return (
         <>
             <GlobalStyles></GlobalStyles>
-            <img className='logoImage' alt='logo' src='imgs/logo_x.png' ></img>
+            <img className='logoImage' alt='logo' src='assets/imgs/logo_x.png' ></img>
             <h1 style={
                 {
                     color: '#bbe4f7'

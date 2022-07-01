@@ -32,7 +32,7 @@ input.idClass {
   font-family: 'GmarketSansMedium';
   border-radius: 10px;
   border-color: #E6F7FF;
-  background-image: url('../../public/icons/user.png');
+  background-image: url('../../public/assets/icons/user.png');
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center left;
@@ -48,7 +48,7 @@ input.pwClass {
   font-family: 'GmarketSansMedium';
   border-radius: 10px;
   border-color: #E6F7FF;
-  background-image: url('../../public/icons/lock.png');
+  background-image: url('../../public/assets/icons/lock.png');
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center left;
