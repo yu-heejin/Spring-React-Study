@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GlobalStyles from '../styles/GlobalStyle';
 import '../styles/Project.css';
-import Picker from 'emoji-picker-react';
 import { Link } from "react-router-dom";
-import Modal from "../component/Modal";
+import styled from 'styled-components';
+
+const ProjectTitle = styled.div`
+    width: 40%;
+    background-color: #bbe1ff;
+    border-radius: 30px;
+    margin-left: 20px;
+    padding: 1%;
+    text-align: left;
+    margin-top: 10px;
+`
 
 function Project() {
-    const [chosenEmoji, setChosenEmoji] = useState(null);
-    const [modal, modalChange] = useState(false);
+    //const [chosenEmoji, setChosenEmoji] = useState(null);
+    //const [modal, modalChange] = useState(false);
 
-    const onEmojiClick = (e, obj) => {
-        setChosenEmoji(obj);
-    };
+    // const onEmojiClick = (e, obj) => {
+    //     setChosenEmoji(obj);
+    // };
 
     return (
         <div>
             <GlobalStyles></GlobalStyles>  
             <div className='top'>
-                <div className='title'>
-                    <Picker native onEmojiClick={onEmojiClick}></Picker>
-                    {chosenEmoji ? (
-                        <span>{chosenEmoji.emoji} project title</span>
-                        ) : (
-                        <span>project title</span>
-                        )}
-                </div>
+                <ProjectTitle>
+                    <span className='titleText'>(이모지) 프로젝트 제목</span>
+                </ProjectTitle>
             </div>
-            <span className='add'><Link onClick={()=>modalChange(true)}>+ 칸반보드 추가하기</Link></span>
-            { modal === true
-            ? <Modal></Modal>
-            : null 
-             }
+            <span className='add'><Link>+ 칸반보드 추가하기</Link></span>
             <div className='left2'>
-                <span>Meet Schedule</span>
+                <span className='sideText'>Meet Schedule</span>
                 <p className='setTime'><Link>회의 시간 설정하기</Link></p>
             </div>
         </div>

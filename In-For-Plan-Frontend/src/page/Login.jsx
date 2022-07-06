@@ -51,6 +51,7 @@ function Login() {
             <img className='logoImage' alt='logo' src='assets/imgs/logo_x.png' ></img>
             <DivStyle>
                 <Cover>
+                    <Google>Sign in with Google</Google>
                     <form onSubmit={onSubmit}>
                         <p><input className='idClass' type="text"
                             name="id"
@@ -89,7 +90,11 @@ const DivStyle = styled.div`
 const Cover = styled.div`
     width: 600px;
     height: 300px;
-    margin: 100px auto;
+    margin: 50px auto;
 `;
 
+const Google = styled.a`
+    background-color: pink;
+    padding: 2%;
+`
 export default Login;

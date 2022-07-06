@@ -63,7 +63,7 @@ function Main() {
                     </div>
                     <div className='projectList'>
                         Project
-                        <p><Link to="/signup">+프로젝트 추가하기</Link></p>
+                        <p className='addProject'><Link to="/signup">+프로젝트 추가하기</Link></p>
                         <ProjectDiv><Link className='proTitle' to="/project">웹 개발 프로젝트</Link></ProjectDiv>
                         <ProjectDiv><Link className='proTitle' to="/project">산책 동아리</Link></ProjectDiv>
                     </div>

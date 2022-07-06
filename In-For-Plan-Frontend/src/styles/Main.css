@@ -52,3 +52,9 @@ a.proTitle {
     font-family: 'GmarketSansMedium';
     text-decoration: none;
 }
+
+p.addProject {
+    text-align: right;
+    margin-right: 30px;
+    font-size: 15px;
+}

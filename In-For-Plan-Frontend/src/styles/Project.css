@@ -11,14 +11,6 @@ div.left2 {
     background-color: #e2e2e2;
 }
 
-div.title {
-    width: 40%;
-    height: 8vh;
-    background-color: #bbe1ff;
-    border-radius: 30px;
-    margin-left: 20px;   
-}
-
 p.setTime {
     font-size: 12px;
 }
@@ -27,4 +19,12 @@ span.add {
     font-size: 12px;
     float: right;
     margin: 10px;
+}
+
+span.titleText {
+    font-size: 23px;
+}
+
+span.sideText {
+    margin-top: 20x;
 }
