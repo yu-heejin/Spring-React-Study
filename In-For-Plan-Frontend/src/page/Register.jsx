@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 import '../styles/Register.css';
-import GlobalStyles from '../styles/GlobalStyle';
 import axios from 'axios';
 
 function Register() {
@@ -75,7 +74,6 @@ function Register() {
 
     return (
         <>
-            <GlobalStyles></GlobalStyles>
             <img className='logoImage' alt='logo' src='assets/imgs/logo_x.png' ></img>
             <h1 style={
                 {

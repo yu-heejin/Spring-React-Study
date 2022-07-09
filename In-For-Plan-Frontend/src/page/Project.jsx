@@ -1,5 +1,4 @@
 import React from 'react';
-import GlobalStyles from '../styles/GlobalStyle';
 import '../styles/Project.css';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
@@ -24,7 +23,6 @@ function Project() {
 
     return (
         <div>
-            <GlobalStyles></GlobalStyles>  
             <div className='top'>
                 <ProjectTitle>
                     <span className='titleText'>(이모지) 프로젝트 제목</span>

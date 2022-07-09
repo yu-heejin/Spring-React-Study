@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/Main.css';
-import GlobalStyles from '../styles/GlobalStyle';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { Link } from 'react-router-dom';
 import '../styles/Calendar.css';
 import moment from 'moment';
 import styled from 'styled-components';
+import AddModal from '../component/AddProjecModal';
 
 const ProjectDiv = styled.div`
     width: 90%;
@@ -27,9 +27,10 @@ function Main() {
         "22-07-2022"
     ];
 
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div>
-            <GlobalStyles></GlobalStyles>
             <div className='left'>
                 <img src='assets/imgs/dog.jpg' style={{
                 width: 80,
@@ -63,7 +64,11 @@ function Main() {
                     </div>
                     <div className='projectList'>
                         Project
-                        <p className='addProject'><Link to="/signup">+프로젝트 추가하기</Link></p>
+                        <p className='addProject'><Link onClick={function () {setIsOpen(true)}}>+프로젝트 추가하기</Link></p>
+                        {isOpen === true ?
+                        <AddModal></AddModal>
+                        : null
+                        }
                         <ProjectDiv><Link className='proTitle' to="/project">웹 개발 프로젝트</Link></ProjectDiv>
                         <ProjectDiv><Link className='proTitle' to="/project">산책 동아리</Link></ProjectDiv>
                     </div>

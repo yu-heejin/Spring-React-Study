@@ -3,6 +3,7 @@ import styled from "styled-components";
 import '../styles/Login.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import GlobalStyles from '../styles/GlobalStyle';
 
 function Login() {
     //react hook
@@ -48,10 +49,20 @@ function Login() {
 
     return (
         <>
+            <GlobalStyles></GlobalStyles>
             <img className='logoImage' alt='logo' src='assets/imgs/logo_x.png' ></img>
             <DivStyle>
                 <Cover>
-                    <Google>Sign in with Google</Google>
+                    <Google type='button' onClick={function() {alert('hello')}}>
+                        <div style={{ verticalAlign: 'middle'}}>
+                        <img alt='google' src='assets/icons/google.png' style={{
+                            width: '30px',
+                            height: '30px',
+                            marginRight: '10px',
+                            marginTop: '0px'
+                        }}></img><span>Sign in with Google</span>
+                        </div>
+                    </Google>
                     <form onSubmit={onSubmit}>
                         <p><input className='idClass' type="text"
                             name="id"
@@ -93,8 +104,10 @@ const Cover = styled.div`
     margin: 50px auto;
 `;
 
-const Google = styled.a`
+const Google = styled.button`
     background-color: pink;
     padding: 2%;
+    font-family: GmarketSansMedium;
+    border-width: 0px;
 `
 export default Login;
