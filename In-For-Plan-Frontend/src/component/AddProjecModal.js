@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function AddProjectModal() {
+function AddProjectModal({ closeModalFunction }) {
+    const [closeModal, setCloseModal] = useState(true);
+
+    closeModalFunction(closeModal);
+
     return (
         <ModalBackground>
             <div style={{
@@ -11,8 +15,15 @@ function AddProjectModal() {
                 paddingLeft: '3%',
                 paddingRight: '3%',
                 display: 'inline-block',
-                marginTop: '10%'
+                marginTop: '10%',
             }}>
+                <img src='assets/icons/close.png' alt='close' style={{
+                    width: '10px',
+                    height: '10px',
+                    float: 'right',
+                    verticalAlign: 'top'
+                }}
+                onClick={function() {setCloseModal(false)}}></img>
                 <h3>Create your project ✌️</h3>
             <form>
                 <table>
@@ -58,7 +69,6 @@ const ModalBackground = styled.div`
     bottom: 0;
     right: 0;
     z-index: 0;
-    text-align: center;
 `
 
 export default AddProjectModal;
