@@ -3,6 +3,29 @@ import styled from 'styled-components';
 
 function AddProjectModal({ closeModalFunction }) {
     const [closeModal, setCloseModal] = useState(true);
+    const [members, setMembers] = useState("");
+    const [result, setResult] = useState("");
+
+    var arr = ["test1@email.com", "test2@email.net"];
+    var isThere = false;
+
+    const inputMembers = (e) => {
+        setMembers(e.target.value);
+        console.log(e.target.value);
+    }
+
+    const onSearch = () => {
+        for(var i=0; i<arr.length; i++) {
+            if(arr[i].includes(members)) {
+                setResult("invite " + arr[i] + " users");
+                isThere = true;
+            }
+        }
+
+        if(isThere === false) {
+            setResult("no users");
+        }
+    }
 
     closeModalFunction(closeModal);
 
@@ -29,15 +52,17 @@ function AddProjectModal({ closeModalFunction }) {
                 <table>
                     <tr>
                         <td><b>Project title</b></td>
-                        <td><TextInput type="text"></TextInput></td>
+                        <td><TextInput type="text" name='title'></TextInput></td>
                     </tr>
                     <tr>
-                        <td><b>Person</b></td>
-                        <td><TextInput type="text"></TextInput></td>
+                        <td><b>Member</b></td>
+                        <td><TextInput type="text" name='members' onChange={inputMembers} placeholder='Enter a member email'></TextInput></td>
+                        <td><button type='button' onClick={onSearch}>search</button></td>
                     </tr>
+                    <p>{result}</p>
                     <tr>
                         <td><b>description</b></td>
-                        <td><TextInput type="text"></TextInput></td>
+                        <td><TextInput type="text" name='description'></TextInput></td>
                     </tr>
                 </table>
                 <CreateButton>create</CreateButton>

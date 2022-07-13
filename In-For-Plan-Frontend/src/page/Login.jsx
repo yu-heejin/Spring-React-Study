@@ -53,7 +53,7 @@ function Login() {
             <img className='logoImage' alt='logo' src='assets/imgs/logo_x.png' ></img>
             <DivStyle>
                 <Cover>
-                    <Google type='button' onClick={function() {alert('hello')}}>
+                    <Google type='button' onClick={() => window.open(`https://accounts.google.com/o/oauth2/v2/auth?scope=profile&response_type=code&client_id=457190401330-d0kdd9mkfr8gptk868o0a89oorlvrnre.apps.googleusercontent.com&redirect_uri=http://localhost:3000/main`)}>
                         <div style={{ verticalAlign: 'middle'}}>
                         <img alt='google' src='assets/icons/google.png' style={{
                             width: '30px',

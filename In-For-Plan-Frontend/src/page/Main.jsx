@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Calendar.css';
 import moment from 'moment';
 import styled from 'styled-components';
-import AddModal from '../component/AddProjecModal';
+import AddModal from '../component/Modal/AddProjecModal';
 
 const ProjectDiv = styled.div`
     width: 90%;
@@ -48,7 +48,7 @@ function Main() {
                     fontSize: '10px'
                 }}>마이페이지</Link> <span style={{
                     fontSize: '10px'
-                }}>|</span> <Link style={{
+                }}>|</span> <Link to="/logout"style={{
                     fontSize: '10px'
                 }}>로그아웃</Link>
             </div>
