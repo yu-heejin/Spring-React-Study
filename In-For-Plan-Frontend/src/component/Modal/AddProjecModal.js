@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 function AddProjectModal({ closeModalFunction }) {
     const [closeModal, setCloseModal] = useState(true);
-    const [result, setResult] = useState("");
+    const [result, setResult] = useState(""); //검색결과
     const [isValue, setIsValue] = useState(false);   //입력값이 존재하는가?
-    const [dropDownVal, setDropDownVal] = useState("");   //자동 완성 리스트
+    const [dropDownVal, setDropDownVal] = useState([]);   //자동 완성 리스트(초기값을 배열로 해야 map 사용 가능)
 
-    var arr = ["test1@email.com\n", "test2@email.net\n"
-        , "heejin@gmail.com\n", "tech@naver.com\n"
+    var arr = ["test1@email.com", "test2@email.net"
+        , "heejin@gmail.com", "tech@naver.com"
     ];
 
     const inputMembers = (e) => {
@@ -19,7 +19,7 @@ function AddProjectModal({ closeModalFunction }) {
         //입력값이 저장된 변수를 소문자로 변환시켜 같은 문자열이 포함되면 필터 데이터에 저장
 
         if(e.target.value === "") {
-            setIsValue(false);    //변경이 한 박자 늦음 ㅜ
+            setIsValue(false);    //변경이 한 박자 늦음
             filterData = [];
         } else {
             setIsValue(true);
@@ -31,17 +31,8 @@ function AddProjectModal({ closeModalFunction }) {
     }
 
     const onSearch = () => {
-        console.log(result);
-    }
-
-    const showList = () => {
-        dropDownVal.map(() => {
-            return (
-                <>
-
-                </>
-            )
-        })
+        //console.log(result);
+        alert("invite " + result)
     }
 
     closeModalFunction(closeModal);
@@ -51,7 +42,7 @@ function AddProjectModal({ closeModalFunction }) {
             <div style={{
                 backgroundColor: 'white',
                 paddingTop: '2%',
-                paddingBottom: '2%',
+                paddingBottom: '3%',
                 paddingLeft: '3%',
                 paddingRight: '3%',
                 display: 'inline-block',
@@ -80,14 +71,29 @@ function AddProjectModal({ closeModalFunction }) {
                                     <p style={{
                                         fontSize: '10px',
                                     }}>There is no user.</p>
-                                : <p style={{
+                                : dropDownVal.map((user) =>
+                                <p style={{
                                     fontSize: '10px',
-                                }}>{dropDownVal}</p>}
+                                }}
+                                    onClick={() => {
+                                        setResult(user);
+                                        setIsValue(false);
+                                    }}>{user}</p>
+                                )
+                            }
                             </DropDownContainer>
                             : null
                         }
                         </td>
-                        <td><button type='button' onClick={onSearch}>search</button></td>
+                        <td><button type='button' onClick={onSearch}
+                        style={{width: '120px',
+                            height: '30px',
+                            fontFamily: 'GmarketSansMedium',
+                            borderRadius: '7px',
+                            backgroundColor: '#c7dfea',
+                            borderWidth: '0px',
+                            fontSize: '10px',
+                            color: 'white'}}>Invite member</button></td>
                     </tr>
                     <tr>
                         <td><b>description</b></td>
@@ -133,6 +139,7 @@ const DropDownContainer = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.3);
     list-style-type: none;
     z-index: 3;
+    border-radius: 8px;
 `
 
 export default AddProjectModal;
