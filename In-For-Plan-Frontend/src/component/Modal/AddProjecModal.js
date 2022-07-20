@@ -6,12 +6,13 @@ function AddProjectModal({ closeModalFunction }) {
     const [result, setResult] = useState(""); //검색결과
     const [isValue, setIsValue] = useState(false);   //입력값이 존재하는가?
     const [dropDownVal, setDropDownVal] = useState([]);   //자동 완성 리스트(초기값을 배열로 해야 map 사용 가능)
-
+    const [inputVal, setInputVal] = useState("");
     var arr = ["test1@email.com", "test2@email.net"
         , "heejin@gmail.com", "tech@naver.com"
     ];
 
     const inputMembers = (e) => {
+        setInputVal(e.target.value);
         let member = e.target.value;  //input data 저장하기
         let filterData = arr.filter((i) => 
             i.toLowerCase().includes(member.toLowerCase())
@@ -32,7 +33,7 @@ function AddProjectModal({ closeModalFunction }) {
 
     const onSearch = () => {
         //console.log(result);
-        alert("invite " + result)
+        alert("invite " + result);
     }
 
     closeModalFunction(closeModal);
@@ -64,7 +65,7 @@ function AddProjectModal({ closeModalFunction }) {
                     </tr>
                     <tr>
                         <td><b>Member</b></td>
-                        <td><TextInput type="text" name='members' onChange={inputMembers} placeholder="Enter the user email"></TextInput>
+                        <td><TextInput type="text" name='members' value={inputVal} onChange={inputMembers} placeholder="Enter the user email"></TextInput>
                         {isValue === true ? 
                             <DropDownContainer>
                                 {dropDownVal.length === 0 ? 
@@ -78,6 +79,7 @@ function AddProjectModal({ closeModalFunction }) {
                                     onClick={() => {
                                         setResult(user);
                                         setIsValue(false);
+                                        setInputVal(user);
                                     }}>{user}</p>
                                 )
                             }
@@ -86,8 +88,7 @@ function AddProjectModal({ closeModalFunction }) {
                         }
                         </td>
                         <td><button type='button' onClick={onSearch}
-                        style={{width: '120px',
-                            height: '30px',
+                        style={{padding: '10px',
                             fontFamily: 'GmarketSansMedium',
                             borderRadius: '7px',
                             backgroundColor: '#c7dfea',
