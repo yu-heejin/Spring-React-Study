@@ -40,10 +40,10 @@ public class AccountController {
         return id;
     }
 
-    @PostMapping("/users/password")
-    public String findPassword(@RequestBody AccountRequestDto requestDto) {
-        return accountService.findpw(requestDto);
-    }
+//    @PostMapping("/users/password")
+//    public String findPassword(@RequestBody AccountRequestDto requestDto) {
+//        return accountService.findpw(requestDto);
+//    }
 
     @PostMapping("/users/signin")
     public String login(@RequestBody Map<String, String> user) {

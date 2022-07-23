@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestHeaderRequestMatcher;
 
 @EnableWebSecurity
@@ -49,6 +50,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/api/v1/**").permitAll()
                 .antMatchers("/api/v1/users/**").permitAll()
                 .anyRequest().authenticated()
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/api/v1/users/logout"))
+                .logoutSuccessUrl("/")
                 .and()
                 //.requestMatcher(new RequestHeaderRequestMatcher("Authorization"))
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),

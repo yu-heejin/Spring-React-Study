@@ -7,6 +7,8 @@ import com.pocket.police.domain.user.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -39,18 +41,6 @@ public class AccountService {
         entity.update(params.getUserId(), params.getPassword(), params.getName(), params.getBirth(), params.getAddress(), params.getPhoneNumber(),
                 params.getUserSirenCode(), params.getGender());
         return id;
-    }
-
-//    @Transactional
-//    public boolean login(final AccountRequestDto params) {
-//        Account entity = accountRepository.findById(params.getUser_id()).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다."));
-//        return entity.login(params.getUser_id(), params.getPassword());
-//    }
-
-    @Transactional
-    public String findpw(final AccountRequestDto params){
-        Account entity = accountRepository.findById(params.getUserId()).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다."));
-        return entity.getPassword();
     }
 
 }
