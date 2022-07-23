@@ -63,7 +63,7 @@ public class JwtTokenProvider {
     //header에서 token값을 가져온다
     //header: JWT를 검증하는 암호화 알고리즘, 토큰 타입 등이 포함된다
     public String resolveToken(HttpServletRequest request) {
-        return request.getHeader("Authorization");    //X-AUTH-TOKEN이란?
+        return request.getHeader("X-AUTH-TOKEN");    //X-AUTH-TOKEN이란?
     }
 
     //토큰의 유효성 + 만료일자 확인

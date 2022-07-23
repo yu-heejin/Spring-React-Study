@@ -60,4 +60,10 @@ public class AccountController {
 
         return "사용자 권한 : " + account.getRoles() + " " + jwtTokenProvider.CreateToken(account.getUserId(), account.getRoles());
     }
+
+    @GetMapping("/users/msg")
+    public String msg() {
+        return "success Logout";
+    }
+
 }
