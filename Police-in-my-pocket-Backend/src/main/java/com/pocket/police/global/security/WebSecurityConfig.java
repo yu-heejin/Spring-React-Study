@@ -51,10 +51,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/users/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/api/v1/users/logout"))
-                .logoutSuccessUrl("/api/v1/users/msg")
-                .and()
+                //.logout()
+                //.logoutRequestMatcher(new AntPathRequestMatcher("/api/v1/users/logout"))
+               // .logoutSuccessUrl("/api/v1/users/msg")
+               // .and()
                 //.requestMatcher(new RequestHeaderRequestMatcher("Authorization"))
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),
                         UsernamePasswordAuthenticationFilter.class);

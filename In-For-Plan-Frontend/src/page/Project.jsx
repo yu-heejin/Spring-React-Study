@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState }from 'react';
 import '../styles/Project.css';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import CalcModal from '../component/Modal/CalculateMeetTime';
 
 const ProjectTitle = styled.div`
     width: 40%;
@@ -14,12 +15,11 @@ const ProjectTitle = styled.div`
 `
 
 function Project() {
-    //const [chosenEmoji, setChosenEmoji] = useState(null);
-    //const [modal, modalChange] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    // const onEmojiClick = (e, obj) => {
-    //     setChosenEmoji(obj);
-    // };
+    const closeModalFunction = (x) => {
+        setIsOpen(x);
+    }
 
     return (
         <div>
@@ -31,7 +31,11 @@ function Project() {
             <span className='add'><Link>+ 칸반보드 추가하기</Link></span>
             <div className='left2'>
                 <span className='sideText'>Meet Schedule</span>
-                <p className='setTime'><Link>회의 시간 설정하기</Link></p>
+                <p className='setTime'><Link onClick={function () {setIsOpen(true)}}>회의 시간 설정하기</Link></p>
+                {isOpen === true ?
+                        <CalcModal closeModalFunction={closeModalFunction}></CalcModal>
+                        : null
+                }
             </div>
         </div>
 
