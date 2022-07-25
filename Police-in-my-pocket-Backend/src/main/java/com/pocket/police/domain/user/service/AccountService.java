@@ -4,6 +4,7 @@ import com.pocket.police.domain.user.dto.AccountRequestDto;
 import com.pocket.police.domain.user.dto.AccountResponseDto;
 import com.pocket.police.domain.user.entity.Account;
 import com.pocket.police.domain.user.repository.AccountRepository;
+import com.pocket.police.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

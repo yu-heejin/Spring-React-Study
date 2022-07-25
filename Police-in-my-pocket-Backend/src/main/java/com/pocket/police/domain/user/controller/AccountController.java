@@ -22,8 +22,6 @@ public class AccountController {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
-
-
     @PostMapping("/users/signup")
     public String save(@RequestBody final AccountRequestDto params) {
         return accountService.save(params);
@@ -40,11 +38,6 @@ public class AccountController {
         return id;
     }
 
-//    @PostMapping("/users/password")
-//    public String findPassword(@RequestBody AccountRequestDto requestDto) {
-//        return accountService.findpw(requestDto);
-//    }
-
     @PostMapping("/users/signin")
     public String login(@RequestBody Map<String, String> user) {
         Account account = accountRepository.findByUserId(user.get("userId"))
@@ -59,11 +52,6 @@ public class AccountController {
         }
 
         return "사용자 권한 : " + account.getRoles() + " " + jwtTokenProvider.CreateToken(account.getUserId(), account.getRoles());
-    }
-
-    @GetMapping("/users/msg")
-    public String msg() {
-        return "success Logout";
     }
 
 }
