@@ -1,5 +1,6 @@
 package com.pocket.police.global.security;
 
+import com.pocket.police.global.redis.service.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -14,6 +15,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.time.Duration;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -24,10 +26,11 @@ public class JwtTokenProvider {
     private String secretKey = "policeInMyPocket";
     private static final String AUTHORITIES_KEY = "auth";
     private static final String BEARER_TYPE = "bearer";
+    private RedisService redisService;
 
     //토큰 유효시간은 정하지 않음. 향후 수정 예정
-    private long tokenValidTime = 30 * 60 * 1000L;
-    //private long refreshTokenValid = 30 * 60 * 1000L;
+    private Long tokenValidTime = 30 * 60 * 1000L;
+    private Long refreshTokenValid = 30 * 60 * 24* 1000L;
 
     private final UserDetailsService userDetailsService;
 
@@ -38,7 +41,7 @@ public class JwtTokenProvider {
     }
 
     //JWT token 생성
-    public String CreateToken(String userId, List<String> roles) {
+    public String createToken(String userId, List<String> roles, Long validTime) {
         Claims claims = Jwts.claims().setSubject(userId);
         claims.put("Roles", roles);   //역할
         Date date = new Date();
@@ -48,11 +51,24 @@ public class JwtTokenProvider {
                 .claim(AUTHORITIES_KEY, roles)
 //                .setClaims(claims)  //payload: 토큰에 담아 전송하는 데이터가 포함된다. 이러한 각 정보를 클레임(claim)이라 하며, 키-값으로 구성됨
                 .setIssuedAt(date)   //토큰 발행 시간
-                .setExpiration(new Date(date.getTime() + tokenValidTime))  //향후 수정 예정
+                .setExpiration(new Date(date.getTime() + validTime))  //향후 수정 예정
                 .signWith(SignatureAlgorithm.HS256, secretKey)   // 암호화 알고리즘과 서명에 들어갈 시크릿 키
 //                //서명을 위해서는 인코딩된 헤더와 페이로드, 시크릿 키, 알고리즘이 필요하다.
                 .compact();
 
+    }
+
+    //access token 생성
+    public String createAccessToken(String userId, List<String> roles) {
+        return this.createToken(userId, roles, tokenValidTime);
+    }
+
+    //refresh token 생성
+    public String createRefreshToken(String userId, List<String> roles) {
+        String refreshToken = this.createToken(userId, roles, refreshTokenValid);
+        //redisService.setValues(userId, refreshToken);
+
+        return refreshToken;
     }
 
     //JWT 토큰 인증 정보 조회(토큰 복호화)
