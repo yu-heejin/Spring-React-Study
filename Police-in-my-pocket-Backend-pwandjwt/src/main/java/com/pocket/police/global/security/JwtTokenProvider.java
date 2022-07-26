@@ -29,8 +29,8 @@ public class JwtTokenProvider {
     private RedisService redisService;
 
     //토큰 유효시간은 정하지 않음. 향후 수정 예정
-    private Long tokenValidTime = 30 * 60 * 1000L;
-    private Long refreshTokenValid = 30 * 60 * 24* 1000L;
+    private Long tokenValidTime = 1000L * 60 * 3;   //3m
+    private Long refreshTokenValid = 1000L * 60 * 60 * 24;  //1d
 
     private final UserDetailsService userDetailsService;
 
@@ -66,7 +66,7 @@ public class JwtTokenProvider {
     //refresh token 생성
     public String createRefreshToken(String userId, List<String> roles) {
         String refreshToken = this.createToken(userId, roles, refreshTokenValid);
-        //redisService.setValues(userId, refreshToken);
+        //redisService.setValues(userId, refreshToken, Duration.ofMillis(refreshTokenValid));
 
         return refreshToken;
     }
