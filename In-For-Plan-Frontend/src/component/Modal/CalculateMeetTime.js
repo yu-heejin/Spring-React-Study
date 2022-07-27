@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Slider, { Range } from 'rc-slider';
+import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import '../../styles/Slider.css';
 
 function AddProjectModal({ closeModalFunction }) {
     const [closeModal, setCloseModal] = useState(true);
-    const [num, setNum] = useState(0);
+    const [num, setNum] = useState([2, 5]);
     const marks = {
         0: '0',
         1: '1',
@@ -61,15 +61,21 @@ function AddProjectModal({ closeModalFunction }) {
                 }}
                 onClick={function() {setCloseModal(false)}}></img>
                 <h3>Meet Schedule Setting 😲</h3>
-                <Slider
-                    min={0}
-                    max={23}
-                    allowCross={true}
-                    value={num}
-                    onChange={val=>changeNum(val)}
-                    marks={marks}
-                ></Slider>
-                <p>{num}</p>
+                <div>
+                    <Slider
+                        range={num}
+                        min={0}
+                        max={23}
+                        allowCross={true}
+                        value={num}
+                        onChange={val=>changeNum(val)}
+                        marks={marks}
+                        pushable={true}
+ //                     count={10}  -> 범위를 10개정도 셈
+                    >
+                    </Slider>
+                <p>{num[0]} / {num[1]}</p>
+                </div>
             </div>
         </ModalBackground>
     );

@@ -79,6 +79,7 @@
     vertical-align: middle;
     cursor: pointer;
     margin-right: 10%;
+    margin-top: 2%;
   }
   .rc-slider-mark-text-active {
     color: #666;
