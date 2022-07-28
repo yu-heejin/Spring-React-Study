@@ -1,6 +1,7 @@
 package com.pocket.police.global.security;
 
 
+import com.pocket.police.global.config.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -29,8 +30,8 @@ public class JwtTokenProvider {
     //토큰 유효시간은 정하지 않음. 향후 수정 예정
     private Long tokenValidTime = 1000L * 60 * 3;   //3m
     private Long refreshTokenValid = 1000L * 60 * 60 * 24;  //1d
-
     private final UserDetailsService userDetailsService;
+    private final RedisService redisService;
 
     //객체 초기화, secretKey(디코딩용) Base64로 인코딩
     @PostConstruct  //의존성 주입이 이루어진 후 초기화 수행
@@ -64,6 +65,7 @@ public class JwtTokenProvider {
     //refresh token 생성
     public String createRefreshToken(String userId, List<String> roles) {
         String refreshToken = this.createToken(userId, roles, refreshTokenValid);
+        redisService.setValues(userId, refreshToken, Duration.ofMillis(tokenValidTime));
         return refreshToken;
     }
 
