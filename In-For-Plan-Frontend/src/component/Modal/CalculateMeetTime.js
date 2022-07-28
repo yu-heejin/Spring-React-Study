@@ -47,9 +47,9 @@ function AddProjectModal({ closeModalFunction }) {
             <div style={{
                 backgroundColor: 'white',
                 paddingTop: '2%',
-                paddingBottom: '3%',
-                paddingLeft: '20%',
-                paddingRight: '20%',
+                paddingBottom: '5%',
+                paddingLeft: '10%',
+                paddingRight: '10%',
                 display: 'inline-block',
                 marginTop: '10%',
             }}>
@@ -62,6 +62,13 @@ function AddProjectModal({ closeModalFunction }) {
                 onClick={function() {setCloseModal(false)}}></img>
                 <h3>Meet Schedule Setting 😲</h3>
                 <div>
+                    <div style={{ float: 'left', textAlign: 'center', display: 'flex'}}>
+                        <img className='profile' alt='profile' src='assets/imgs/dog.jpg'
+                            style={{ width: '50px',
+                                    borderRadius: '70%',
+                                    float: 'left',
+                                    display: 'inline'
+                                }} ></img>
                     <Slider
                         range={num}
                         min={0}
@@ -71,10 +78,12 @@ function AddProjectModal({ closeModalFunction }) {
                         onChange={val=>changeNum(val)}
                         marks={marks}
                         pushable={true}
+                        style={{float: 'right',
+                                display: 'inline'}}
  //                     count={10}  -> 범위를 10개정도 셈
                     >
                     </Slider>
-                <p>{num[0]} / {num[1]}</p>
+                    </div>
                 </div>
             </div>
         </ModalBackground>
