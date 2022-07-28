@@ -1,6 +1,6 @@
 package com.pocket.police.domain.user.service;
 
-import com.pocket.police.domain.token.dto.LoginTokenResponseDto;
+import com.pocket.police.domain.user.dto.LoginTokenResponseDto;
 import com.pocket.police.domain.user.dto.AccountRequestDto;
 import com.pocket.police.domain.user.dto.AccountResponseDto;
 import com.pocket.police.domain.user.entity.Account;
@@ -8,8 +8,6 @@ import com.pocket.police.domain.user.repository.AccountRepository;
 import com.pocket.police.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Sort;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
