@@ -1,6 +1,6 @@
 package com.pocket.police.global.security;
 
-import com.pocket.police.global.redis.service.RedisService;
+import com.pocket.police.global.config.redis.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -66,7 +66,7 @@ public class JwtTokenProvider {
     //refresh token 생성
     public String createRefreshToken(String userId, List<String> roles) {
         String refreshToken = this.createToken(userId, roles, refreshTokenValid);
-        //redisService.setValues(userId, refreshToken, Duration.ofMillis(refreshTokenValid));
+        redisService.setValues(userId, refreshToken, Duration.ofMillis(refreshTokenValid));
 
         return refreshToken;
     }
@@ -102,5 +102,12 @@ public class JwtTokenProvider {
         }
         return null;
        // return request.getHeader("X-AUTH-TOKEN");    //X-AUTH-TOKEN이란?
+    }
+
+    public void checkRefreshToken(String userId, String refreshToken) {
+        String redisRT = redisService.getValues(userId);
+        if(!refreshToken.equals(redisRT)) {
+            throw new IllegalArgumentException("토큰이 만료되었습니다.");
+        }
     }
 }

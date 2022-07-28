@@ -55,8 +55,7 @@ public class AccountService {
         return id;
     }
 
-
-    @Transactional
+//    @Transactional
     public LoginTokenResponseDto login(String userId, String password) {
         Account account = accountRepository.findByUserId(userId)
                 .orElseThrow(() -> new IllegalArgumentException("없는 사용자 id : " + userId));
@@ -67,6 +66,20 @@ public class AccountService {
 
         String accessToken = jwtTokenProvider.createAccessToken(account.getUserId(), account.getRoles());
         String refreshToken = jwtTokenProvider.createRefreshToken(account.getUserId(), account.getRoles());
+
+        return new LoginTokenResponseDto(accessToken, refreshToken);
+    }
+
+//    @Transactional
+    public LoginTokenResponseDto reIssueToken(String userId, String password, String refreshToken) {
+        Account account = accountRepository.findByUserId(userId)
+                .orElseThrow(() -> new IllegalArgumentException("없는 사용자 id : " + userId));
+
+        if (!passwordEncoder.matches(password, account.getPassword())) {
+            throw new IllegalArgumentException("잘못된 비밀번호 입니다.");
+        }
+
+        String accessToken = jwtTokenProvider.createAccessToken(account.getUserId(), account.getRoles());
 
         return new LoginTokenResponseDto(accessToken, refreshToken);
     }

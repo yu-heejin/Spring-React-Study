@@ -24,6 +24,7 @@ public class AccountController {
 
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
+    private String userPw;
 
     @PostMapping("/users/signup")
     public String save(@RequestBody final AccountRequestDto params) {
@@ -56,11 +57,18 @@ public class AccountController {
 
     @PostMapping("/users/signin")
     public ResponseEntity<LoginTokenResponseDto> login(@RequestBody Map<String, String> user) {
+        userPw = user.get("password");
 
         LoginTokenResponseDto responseDto = accountService.login(user.get("userId"), user.get("password"));
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
 
         //return "사용자 권한 : " + account.getRoles() + " " + jwtTokenProvider.CreateToken(account.getUserId(), account.getRoles());
+    }
+
+    @GetMapping("/users/rsignin")
+    public ResponseEntity<LoginTokenResponseDto> reLogin(@RequestParam("userId") String userId, @RequestParam("refreshToken") String refreshToken) {
+        LoginTokenResponseDto responseDto = accountService.reIssueToken(userId, userPw, refreshToken);
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
 }
