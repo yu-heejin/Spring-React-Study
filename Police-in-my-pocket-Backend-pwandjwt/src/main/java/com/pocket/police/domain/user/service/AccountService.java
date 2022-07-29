@@ -9,6 +9,7 @@ import com.pocket.police.global.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -74,6 +75,7 @@ public class AccountService {
             throw new IllegalArgumentException("잘못된 비밀번호 입니다.");
         }
 
+        jwtTokenProvider.checkRefreshToken(userId, refreshToken);
         String accessToken = jwtTokenProvider.createAccessToken(account.getUserId(), account.getRoles());
 
         return new LoginTokenResponseDto(accessToken, refreshToken);

@@ -7,6 +7,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -88,6 +89,15 @@ public class JwtTokenProvider {
             return !claims.getBody().getExpiration().before(new Date());
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    //재발급 토큰 만료 확인
+    public void checkRefreshToken(String userId, String refreshToken) {
+        String redisRefreshToken = (String) redisService.getValues(userId);
+
+        if(refreshToken.equals(redisRefreshToken)) {
+            throw new BadCredentialsException("token invalid");
         }
     }
 
