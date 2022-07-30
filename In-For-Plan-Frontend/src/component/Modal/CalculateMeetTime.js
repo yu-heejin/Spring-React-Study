@@ -61,14 +61,14 @@ function AddProjectModal({ closeModalFunction }) {
                 }}
                 onClick={function() {setCloseModal(false)}}></img>
                 <h3>Meet Schedule Setting 😲</h3>
-                <div>
-                    <div style={{ float: 'left', textAlign: 'center', display: 'flex'}}>
-                        <img className='profile' alt='profile' src='assets/imgs/dog.jpg'
-                            style={{ width: '50px',
-                                    borderRadius: '70%',
-                                    float: 'left',
-                                    display: 'inline'
-                                }} ></img>
+                <p>
+                <img className='profile' alt='profile' src='assets/imgs/dog.jpg'
+                    style={{ width: '50px',
+                        borderRadius: '70%',
+                        display: 'inline',
+                        verticalAlign: 'center',
+                }}></img>
+                <figcaption>Marie</figcaption>
                     <Slider
                         range={num}
                         min={0}
@@ -78,13 +78,31 @@ function AddProjectModal({ closeModalFunction }) {
                         onChange={val=>changeNum(val)}
                         marks={marks}
                         pushable={true}
-                        style={{float: 'right',
-                                display: 'inline'}}
  //                     count={10}  -> 범위를 10개정도 셈
                     >
                     </Slider>
-                    </div>
-                </div>
+                </p>
+            
+                <p>
+                <img className='profile' alt='profile' src='assets/imgs/dog.jpg'
+                    style={{ width: '50px',
+                        borderRadius: '70%',
+                        display: 'inline',
+                        verticalAlign: 'center',
+                }} ></img>
+                <figcaption>Merry</figcaption>
+                    <Slider
+                        range={num}
+                        min={0}
+                        max={23}
+                        allowCross={true}
+                        value={num}
+                        onChange={val=>changeNum(val)}
+                        marks={marks}
+                        pushable={true}
+                    >
+                    </Slider>
+                </p>
             </div>
         </ModalBackground>
     );
